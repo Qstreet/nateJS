@@ -1,9 +1,46 @@
 // const validator = require("validator");
 const chalk = require("chalk");
 const getNotes = require("./notes.js");
+const yargs = require("yargs");
 
-console.log(chalk.green("success!"));
+// Customize yargs version
+yargs.version("1.1.0");
 
-// console.log(chalk.blue.inverse("Hello world!"));
+// create add command
+yargs.command({
+  command: "add",
+  describe: "Add a new note",
+  handler: function() {
+    console.log("Adding a new Note!");
+  }
+});
 
-// console.log(validator.isURL("nateblehcom"));
+// Create remove Command
+yargs.command({
+  command: "remove",
+  describe: "remove a note",
+  handler: function() {
+    console.log("Removing the note");
+  }
+});
+
+yargs.command({
+  command: "list",
+  describe: "List your notes",
+  handler: function() {
+    console.log("Listing your Notes!");
+  }
+});
+
+// Create remove Command
+yargs.command({
+  command: "read",
+  describe: "read a note",
+  handler: function() {
+    console.log("Reading the note");
+  }
+});
+
+// add, remove, read, list
+
+console.log(yargs.argv);

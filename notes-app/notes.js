@@ -1,6 +1,5 @@
-
 const getNotes = function() {
-  console.log("Success!")
-}
+  console.log("Your Notes!");
+};
 
 module.exports = getNotes;
