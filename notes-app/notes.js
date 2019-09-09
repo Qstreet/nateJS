@@ -1,12 +1,12 @@
 const fs = require("fs");
 
-const getNotes = function() {
+const getNotes = function () {
   console.log("Your Notes!");
 };
 
-const addNote = function(title, body) {
+const addNote = function (title, body) {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter(function(note) {
+  const duplicateNotes = notes.filter(function (note) {
     return note.title === title;
   });
 
@@ -20,16 +20,28 @@ const addNote = function(title, body) {
   } else {
     console.log('Note Title Taken');
   }
-
-
 };
 
-const saveNotes = function(notes) {
+const removeNote = function (title) {
+  const notes = loadNotes();
+  const notesToSave = notes.filter(function (note) {
+    return note.title !== title;
+  });
+  if (notesToSave.length !== notes.length) {
+    saveNotes(notesToSave)
+    console.log("Note removed");
+  } else {
+    saveNotes(notes)
+    console.log("Note does not exist");
+  }
+}
+
+const saveNotes = function (notes) {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataJSON);
 };
 
-const loadNotes = function() {
+const loadNotes = function () {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
     const dataJSON = dataBuffer.toString();
@@ -41,5 +53,6 @@ const loadNotes = function() {
 
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };
