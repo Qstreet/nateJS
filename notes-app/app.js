@@ -48,14 +48,23 @@ yargs.command({
 //   }
 // })
 
+// yargs.command({
+//   command: 'list',
+//   describe: 'List your notes',
+//   handler: function () {
+//     console.log('Your Notes...')
+//     loadNotes()
+//   }
+// })
+
 yargs.command({
   command: 'list',
   describe: 'List your notes',
-  handler: function () {
-    console.log('Listing your Notes!')
+  handler: function (argv) {
+    console.log('Your Notes...');
+    console.log(notes.loadNotes())
   }
 })
-
 // Create remove Command
 yargs.command({
   command: 'read',
