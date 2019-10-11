@@ -29,7 +29,7 @@ app.get('/about', (req, res) => {
   res.render('about', {
     title: 'about me',
     name: 'Nae',
-    footer: "Created by Nate"
+    footer: "Created by Nate",
   })
 })
 
@@ -47,6 +47,22 @@ app.get('/weather', (req, res) => {
     forecast: 'It is snowing',
     location: "DC"
   })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+      title: '404',
+      errorMessage: 'Help Page Not Found',
+      footer: 'Creadted By Nate'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+      title: '404',
+      footer: 'Created By Nate',
+      errorMessage: 'Page Not Found'
+    })
 })
 
 app.listen(3000, () => {
