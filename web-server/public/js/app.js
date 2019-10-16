@@ -1,1 +1,1 @@
-console.log('Client Side Loaded');
+console.log('Client Side Loaded')
