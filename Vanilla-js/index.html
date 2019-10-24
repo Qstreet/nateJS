@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style type="text/css">
+      body {
+        max-width: 40em;
+        width: 88%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" />
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+
+      <div>
+        <label for="show-password">
+          <input type="checkbox" name="show-passwords" id="show-password" />
+          Show password
+        </label>
+      </div>
+
+      <p>
+        <button type="submit">Log In</button>
+      </p>
+    </form>
+
+    <script>
+      // FFox keeps boxes checked after refresh. This code clears all on refresh
+      var list = document.querySelectorAll("input[type=checkbox]");
+      for (var item of list) {
+        item.checked = false;
+      }
+
+      var check = document.querySelector("#show-password");
+      var pass = document.querySelector("#password");
+      console.log(check);
+      check.addEventListener(
+        "click",
+        function(event) {
+          if (event.target.checked === true) {
+            pass.type = "text";
+          } else {
+            pass.type = "password";
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
