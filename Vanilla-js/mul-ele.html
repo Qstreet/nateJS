@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <form>
+	<div>
+		<label for="current-password">Current Password</label>
+		<input type="password" name="current-password" id="current-password">
+	</div>
+
+	<div>
+		<label for="new-password">New Password</label>
+		<input type="password" name="new-password" id="new-password">
+	</div>
+
+	<div>
+		<label for="show-passwords">
+			<input type="checkbox" name="show-passwords" id="show-passwords">
+			Show passwords
+		</label>
+	</div>
+
+	<p>
+		<button type="submit">Change Passwords</button>
+	</p>
+</form>
+
+  <script>
+  
+  var list = document.querySelectorAll("input[type=checkbox]");
+      for (var item of list) {
+        item.checked = false;
+      }
+
+  var passwords = Array.prototype.slice.call(document.querySelectorAll('[type="password"]'))
+  var toggle = document.querySelector('#show-passwords')
+
+  toggle.addEventListener('click', function (event) {
+    passwords.forEach(function (password) {
+      if(toggle.checked) {
+        password.type = 'text'
+      } else {
+        password.type = 'password'
+
+      }
+    })
+  }, false)
+    
+  </script>
+  
+</body>
+</html>
